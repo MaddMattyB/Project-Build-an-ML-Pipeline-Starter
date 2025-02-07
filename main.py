@@ -22,51 +22,6 @@ _steps = [
 ]
 
 
-@hydra.main(version_base=None, config_path="home/mbazzle2012/Project-Build-an-ML-Pipeline-Starter/config", config_name="config")
-def main(cfg):
-    # Access parameters from the config
-    min_price = cfg.data.min_price
-    max_price = cfg.data.max_price
-
-    # Call the basic cleaning step
-    clean_data = basic_cleaning(raw_data, min_price=min_price, max_price=max_price)
-
-    # Continue with the rest of your pipeline
-    ...
-
-if __name__ == "__main__":
-    main()
-def load_config(config_file):
-    with open(config_file, 'r') as file:
-        config = yaml.safe_load(file)
-    return config
-
-def main():
-    # Set up argument parsing
-    parser = argparse.ArgumentParser(description='Run the ML pipeline.')
-    parser.add_argument('--input_artifact', type=str, required=True, help='Path to the input artifact')
-    parser.add_argument('--output_artifact', type=str, required=True, help='Name for the output artifact')
-    parser.add_argument('--output_type', type=str, required=True, help='Type of the output artifact')
-    parser.add_argument('--output_description', type=str, required=True, help='Description of the output artifact')
-    parser.add_argument('--min_price', type=float, required=True, help='Minimum price for filtering')
-    parser.add_argument('--max_price', type=float, required=True, help='Maximum price for filtering')
-
-    args = parser.parse_args()
-
-    # Load configuration
-    config = load_config('config.yaml')
-
-    # Now you can access the parameters from args
-    min_price = args.min_price
-    max_price = args.max_price
-
-    
-
- 
-    ...
-
-if __name__ == "__main__":
-    main()
 
 # This automatically reads in the configuration
 @hydra.main(config_name='config')
