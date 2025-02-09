@@ -92,7 +92,11 @@ def go(args):
     if os.path.exists("random_forest_dir"):
         shutil.rmtree("random_forest_dir")
 
- 
+        mlflow.sklearn.save_model(
+        sk_pipe,
+        path="random_forest_dir",
+        input_example = X_train.iloc[:5]
+    )
 
 
     # Upload the model we just exported to W&B
